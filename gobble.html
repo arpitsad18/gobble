@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+<!--
+  GOBBLE — local multimodal search.
+  Embeddings: EmbeddingGemma-2 (Google DeepMind) under the Gemma Terms of Use
+  (https://ai.google.dev/gemma/terms), served locally by llama.cpp (MIT) on the
+  ggml-org GGUF conversion. "Gemma" is a trademark of Google LLC; not affiliated with Google.
+  PDF text: Poppler pdftotext. Media: FFmpeg. Index: SQLite + NumPy. See NOTICE.
+-->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -88,6 +95,13 @@
     padding: 6px 13px; display: inline-flex; gap: 7px; align-items: center;
   }
   .themebtn:hover { background: var(--bg-soft); }
+
+  footer.credit {
+    margin-top: 26px; padding-top: 12px; border-top: 1px solid var(--border);
+    color: var(--fg-faint); font-size: 12px; line-height: 1.7;
+  }
+  footer.credit a { color: var(--fg-soft); }
+  footer.credit b { color: var(--fg-soft); font-weight: 600; }
 
   /* ---------------------------------------------------------------- search */
   .searchbar { display: flex; gap: 10px; align-items: stretch; }
@@ -300,6 +314,15 @@
       <p class="kv" id="libkv"></p>
     </section>
   </div>
+  <footer class="credit">
+    Embeddings: <b>EmbeddingGemma-2</b> — a Google DeepMind model, used under the
+    <a href="https://ai.google.dev/gemma/terms" target="_blank" rel="noopener">Gemma Terms of Use</a> —
+    running on this machine through <a href="https://github.com/ggml-org/llama.cpp" target="_blank" rel="noopener">llama.cpp</a>,
+    on the GGUF conversion and <code>mmproj</code> from
+    <a href="https://huggingface.co/ggml-org/embeddinggemma-2-GGUF" target="_blank" rel="noopener">ggml-org</a>.
+    “Gemma” is a trademark of Google LLC; GOBBLE is independent and not affiliated with Google.<br>
+    PDF text by Poppler <code>pdftotext</code> · keyframes &amp; audio by FFmpeg · index: SQLite + NumPy.
+  </footer>
 </div>
 
 <dialog id="viewer">

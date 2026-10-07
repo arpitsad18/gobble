@@ -16,6 +16,13 @@ query can return a photo, a keyframe or a lecture timestamp. It has no video
 tower, so a video is indexed as sampled keyframes (image vectors) plus audio
 segments (audio vectors) - each carrying its timestamp.
 
+Credits: the embeddings come from EmbeddingGemma-2 (Google DeepMind), used
+under the Gemma Terms of Use (https://ai.google.dev/gemma/terms) and served
+locally by llama.cpp on the GGUF conversion by ggml-org; "Gemma" is a
+trademark of Google LLC and this project is not affiliated with Google.
+PDF text: Poppler pdftotext. Media: FFmpeg. Index: SQLite + NumPy.
+GOBBLE itself is MIT. Full list: NOTICE.
+
   - text  -> pdftotext / WinRT OCR / raw read
   - image -> embedded visually (+ optional --ocr text chunks)
   - audio -> 16 kHz mono WAV segments -> input_audio
@@ -843,6 +850,8 @@ def cmd_stats(args) -> None:
                       "GROUP BY 1 ORDER BY 2 DESC").fetchall()
     if mod:
         print("by modality: " + ", ".join(f"{m}={n}" for m, n in mod))
+    print("embeddings: EmbeddingGemma-2 (Google DeepMind) via llama.cpp - Gemma Terms of Use:\n"
+          "            https://ai.google.dev/gemma/terms  |  credits: NOTICE")
 
 
 def cmd_serve(args) -> None:
@@ -851,7 +860,12 @@ def cmd_serve(args) -> None:
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(prog="gobble", description=__doc__)
+    ap = argparse.ArgumentParser(
+        prog="gobble", description=__doc__,
+        epilog="Embeddings: EmbeddingGemma-2 (Google DeepMind, Gemma Terms of Use -\n"
+               "https://ai.google.dev/gemma/terms) served locally by llama.cpp.\n"
+               "GOBBLE is MIT; third-party credits: NOTICE.",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     pi = sub.add_parser("index", help="index folders (default: roots.txt)")
     pi.add_argument("paths", nargs="*")

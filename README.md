@@ -27,6 +27,10 @@ GOBBLE — local search
                 --embeddings --host 127.0.0.1 --port 8080
    ```
 
+   Grab those two files from [ggml-org/embeddinggemma-2-GGUF](https://huggingface.co/ggml-org/embeddinggemma-2-GGUF).
+   EmbeddingGemma-2 is Google DeepMind's model and is used here under the
+   [Gemma Terms of Use](https://ai.google.dev/gemma/terms) — see [Credits](#credits).
+
 2. Run the web UI:
 
    ```
@@ -99,6 +103,33 @@ multiply (exact cosine, fine at tens of thousands of chunks).
 repo points at a real folder, and the committed `bench/` results have their corpus paths
 replaced by placeholders (`<vault>/doc-014.md`, `<library>/doc-001.pdf`). The index itself
 (`index/*.db`) and model weights (`*.gguf`) are git-ignored, so a clone contains code only.
+
+## Credits
+
+GOBBLE is a thin shell around other people's work, and the embedding model is the heart of it:
+**EmbeddingGemma-2**, from **Google DeepMind**, running locally through **llama.cpp** on the GGUF
+conversion and multimodal projector published by **ggml-org**.
+
+| what | who | licence |
+|---|---|---|
+| EmbeddingGemma-2 (text / image / audio embeddings) | Google DeepMind | [Gemma Terms of Use](https://ai.google.dev/gemma/terms) |
+| GGUF weights + `mmproj` | [ggml-org/embeddinggemma-2-GGUF](https://huggingface.co/ggml-org/embeddinggemma-2-GGUF) | Gemma Terms of Use |
+| llama.cpp / `llama-server` | Georgi Gerganov and the ggml-org contributors | MIT |
+| Ollama backend (optional, text only) | Ollama | MIT |
+| `nomic-embed-text` — the baseline in `bench/` | Nomic AI | Apache-2.0 |
+| `pdftotext` (Poppler) — PDF text and page numbers | the Poppler developers | GPL-2.0 |
+| FFmpeg — keyframes, audio segments, `ffprobe` | the FFmpeg team | LGPL/GPL |
+| SQLite · NumPy · Pillow · Windows OCR | the respective projects | Public domain · BSD · HPND · Microsoft |
+
+As required by the Gemma Terms of Use:
+
+> Gemma is provided under and subject to the Gemma Terms of Use found at
+> ai.google.dev/gemma/terms
+
+"Gemma" and the Gemma marks are trademarks of Google LLC. GOBBLE is an independent project —
+not affiliated with, endorsed by or sponsored by Google. No model weights are redistributed
+here: GOBBLE calls the published GGUF files, which you fetch and accept the terms for yourself.
+The full list, including the benchmark lineage and the multimodal caveats, is in [`NOTICE`](NOTICE).
 
 ## Licence
 

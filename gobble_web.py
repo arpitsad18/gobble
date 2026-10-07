@@ -9,6 +9,11 @@ is what makes video seeking work) and add folders to the index.
 
 Everything binds to 127.0.0.1 - nothing is exposed to the network and no
 request leaves the machine except the embedding call to your own llama-server.
+
+Embeddings: EmbeddingGemma-2 (Google DeepMind), used under the Gemma Terms of
+Use (https://ai.google.dev/gemma/terms) and served locally by llama.cpp (MIT)
+on the ggml-org GGUF conversion. "Gemma" is a trademark of Google LLC; this
+project is not affiliated with Google. Credits: NOTICE.
 """
 
 from __future__ import annotations
@@ -358,6 +363,8 @@ def serve(host: str = "127.0.0.1", port: int = 8765, open_browser: bool = False)
     print(f"[gobble] embedder: {'ready ' + detail if ok else 'NOT READY - ' + detail}")
     print(f"[gobble] pdftotext: {core.PDFTOTEXT or 'not found (PDFs will fall back to OCR)'}")
     print(f"[gobble] ui      : http://{host}:{port}   (ctrl-c to stop)")
+    print("[gobble] credits : embeddings by EmbeddingGemma-2 (Google DeepMind), Gemma"
+          " Terms of Use - https://ai.google.dev/gemma/terms - via llama.cpp; see NOTICE")
     httpd = ThreadingHTTPServer((host, port), Handler)
     httpd.daemon_threads = True
     if open_browser:

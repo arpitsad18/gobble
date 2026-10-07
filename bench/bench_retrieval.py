@@ -15,6 +15,11 @@ Prompt formats (per model family, as published):
   gemma  doc  -> "title: {t} | text: {c}"      query -> "task: search result | query: {q}"
   nomic  doc  -> "search_document: {c}"        query -> "search_query: {q}"
 Vectors are L2-normalised after MRL truncation to the config dim, so cosine == dot.
+
+Models: gemma-* = EmbeddingGemma-2, Google DeepMind, used under the Gemma Terms
+of Use (https://ai.google.dev/gemma/terms), GGUF conversion by ggml-org, served
+by llama.cpp. nomic-* = nomic-embed-text (Nomic AI, Apache-2.0) via Ollama.
+"Gemma" is a trademark of Google LLC; this project is not affiliated with Google.
 """
 
 from __future__ import annotations

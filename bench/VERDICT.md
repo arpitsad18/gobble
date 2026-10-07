@@ -320,3 +320,22 @@ Two silent-corruption traps found here, both now fixed in `localsrch.py`:
 
 Corollary rule: never trust the exit code of a media index. Count rows per modality
 and assert each is non-zero — `SELECT modality, COUNT(*) FROM chunks GROUP BY 1`.
+
+---
+
+## Credits
+
+Every number above is an EmbeddingGemma-2 number unless the row says `nomic`.
+**EmbeddingGemma-2** is a Google DeepMind model, used here under the
+[Gemma Terms of Use](https://ai.google.dev/gemma/terms); the GGUF weights and multimodal
+projector (`mmproj`) are the conversion published by
+[ggml-org](https://huggingface.co/ggml-org/embeddinggemma-2-GGUF) and are executed locally by
+[llama.cpp](https://github.com/ggml-org/llama.cpp) (the CUDA build b11463 noted above).
+The comparison baseline, `nomic-embed-text`, is Nomic AI's model (Apache-2.0), served by Ollama.
+
+> Gemma is provided under and subject to the Gemma Terms of Use found at
+> ai.google.dev/gemma/terms
+
+"Gemma" and the Gemma marks are trademarks of Google LLC. GOBBLE is an independent project,
+not affiliated with, endorsed by or sponsored by Google. No model weights are redistributed
+in this repository — only the harness, the frozen query set and the results. Full list: `NOTICE`.

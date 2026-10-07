@@ -1,0 +1,44 @@
+GOBBLE - third-party components and credits
+==========================================
+
+GOBBLE's own code is MIT-licensed (see LICENSE). It redistributes no model
+weights and no third-party binaries: everything below is fetched or installed
+separately, by you.
+
+Gemma / EmbeddingGemma-2 - the embedding model GOBBLE runs
+----------------------------------------------------------
+GOBBLE embeds text, images and audio with EmbeddingGemma-2, a model from
+Google DeepMind. The weights it runs are the GGUF conversion plus multimodal
+projector ("mmproj") published by ggml-org, executed locally by llama.cpp.
+
+    model             EmbeddingGemma-2                      Google DeepMind
+    weights + mmproj  hf.co/ggml-org/embeddinggemma-2-GGUF  GGUF conversion by ggml-org
+    runtime           llama.cpp (llama-server --mmproj)      Georgi Gerganov / ggml-org
+    licence           Gemma Terms of Use - https://ai.google.dev/gemma/terms
+
+Notice required by the Gemma Terms of Use:
+
+    Gemma is provided under and subject to the Gemma Terms of Use found at
+    ai.google.dev/gemma/terms
+
+"Gemma" and the Gemma marks are trademarks of Google LLC (Gemma Terms of Use,
+section 4.2). GOBBLE is an independent project - it is not affiliated with,
+endorsed by or sponsored by Google. Use of the model is also subject to the
+Gemma Prohibited Use Policy:
+https://ai.google.dev/gemma/prohibited_use_policy
+
+Other components GOBBLE uses
+----------------------------
+    llama.cpp / llama-server   MIT               local embedding server (text, image, audio)
+    ggml-org GGUF conversion   Gemma ToU         model weights packaging
+    Ollama (optional backend)  MIT               text-only embeddings alternative
+    nomic-embed-text           Apache-2.0        baseline model measured in bench/
+    Poppler / pdftotext        GPL-2.0           PDF text + page numbers
+    FFmpeg                     LGPL-2.1 / GPL    video keyframes, audio segments, ffprobe
+    SQLite                     Public domain     the index
+    NumPy                      BSD-3-Clause      cosine scoring
+    Pillow                     HPND (MIT-like)   image decoding
+    Windows.Media.Ocr (WinRT)  Microsoft         OCR fallback for scanned images/PDFs
+
+Nothing in this repository bundles, mirrors or re-hosts those projects; GOBBLE
+only calls them.
