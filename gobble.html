@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GOBBLE — local search</title>
+<style>
+  /* ---------------------------------------------------------------- palette
+     Light is the default. Both themes are plain CSS custom properties so the
+     whole page recolours from one attribute on <html>. */
+  :root, html[data-theme="light"] {
+    --bg: #f6f7f9;
+    --bg-soft: #eef1f5;
+    --card: #ffffff;
+    --card-alt: #fbfcfd;
+    --border: #e2e6ec;
+    --border-strong: #cdd4de;
+    --fg: #1b2430;
+    --fg-soft: #5b6879;
+    --fg-faint: #8b97a6;
+    --accent: #2f6df6;
+    --accent-soft: #eaf1ff;
+    --accent-fg: #ffffff;
+    --mark: #fff2a8;
+    --mark-fg: #4a3b00;
+    --ok: #1f9d62;
+    --warn: #c9821a;
+    --err: #d4453c;
+    --shadow: 0 1px 2px rgba(24,39,75,.06), 0 8px 24px rgba(24,39,75,.06);
+    --radius: 12px;
+    --mono: ui-monospace, "Cascadia Mono", "Consolas", monospace;
+    --sans: "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+  html[data-theme="dark"] {
+    --bg: #12161c;
+    --bg-soft: #171d25;
+    --card: #1a2028;
+    --card-alt: #1e252e;
+    --border: #2a333e;
+    --border-strong: #3a4552;
+    --fg: #e7ecf2;
+    --fg-soft: #a3b0bf;
+    --fg-faint: #7b8798;
+    --accent: #5b91ff;
+    --accent-soft: #1d2a44;
+    --accent-fg: #0c1220;
+    --mark: #6b5a12;
+    --mark-fg: #ffeaa0;
+    --ok: #41c98a;
+    --warn: #e0a34a;
+    --err: #ff6b60;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 14px/1.5 var(--sans);
+  }
+  a { color: var(--accent); }
+  button, input, select { font: inherit; color: inherit; }
+  button { cursor: pointer; }
+
+  /* ---------------------------------------------------------------- shell */
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 18px 18px 64px; }
+  header.top {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    padding-bottom: 14px; margin-bottom: 18px; border-bottom: 1px solid var(--border);
+  }
+  .brand { display: flex; align-items: baseline; gap: 10px; margin-right: auto; }
+  .logo {
+    font-size: 26px; font-weight: 800; letter-spacing: -.5px;
+    background: linear-gradient(92deg, var(--accent), var(--ok));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .tag { color: var(--fg-faint); font-size: 12px; }
+  .pills { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pill {
+    background: var(--card); border: 1px solid var(--border); border-radius: 999px;
+    padding: 4px 11px; font-size: 12px; color: var(--fg-soft); white-space: nowrap;
+  }
+  .pill b { color: var(--fg); font-weight: 600; }
+  .pill.ok b { color: var(--ok); }
+  .pill.bad b { color: var(--err); }
+
+  .themebtn {
+    background: var(--card); border: 1px solid var(--border-strong); border-radius: 999px;
+    padding: 6px 13px; display: inline-flex; gap: 7px; align-items: center;
+  }
+  .themebtn:hover { background: var(--bg-soft); }
+
+  /* ---------------------------------------------------------------- search */
+  .searchbar { display: flex; gap: 10px; align-items: stretch; }
+  .search {
+    flex: 1; display: flex; align-items: center; gap: 8px;
+    background: var(--card); border: 1px solid var(--border-strong);
+    border-radius: var(--radius); padding: 4px 6px 4px 14px; box-shadow: var(--shadow);
+  }
+  .search:focus-within { border-color: var(--accent); }
+  .search svg { flex: none; opacity: .55; }
+  #q {
+    flex: 1; border: 0; outline: 0; background: transparent;
+    padding: 11px 0; font-size: 16px;
+  }
+  .btn {
+    border: 1px solid var(--border-strong); background: var(--card);
+    border-radius: var(--radius); padding: 11px 18px; font-weight: 600;
+  }
+  .btn:hover { background: var(--bg-soft); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+  .btn.primary:hover { filter: brightness(1.06); }
+  .btn.small { padding: 7px 12px; font-size: 13px; }
+  .btn[disabled] { opacity: .5; cursor: default; }
+  select.k {
+    border: 1px solid var(--border-strong); background: var(--card);
+    border-radius: var(--radius); padding: 11px 10px;
+  }
+
+  .filters {
+    display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 12px 0 4px;
+  }
+  .chip {
+    border: 1px solid var(--border); background: var(--card); color: var(--fg-soft);
+    border-radius: 999px; padding: 5px 13px; font-size: 13px;
+  }
+  .chip:hover { border-color: var(--border-strong); }
+  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+  .filters .field {
+    border: 1px solid var(--border); background: var(--card); border-radius: 999px;
+    padding: 5px 13px; font-size: 13px; min-width: 190px; outline: 0;
+  }
+  .filters .field:focus { border-color: var(--accent); }
+  .spacer { margin-left: auto; }
+  .hint { color: var(--fg-faint); font-size: 12px; }
+
+  /* ---------------------------------------------------------------- results */
+  .status { margin: 14px 2px 10px; color: var(--fg-soft); font-size: 13px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .results { display: grid; gap: 10px; }
+  .hit {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 12px 14px; box-shadow: var(--shadow); animation: rise .18s ease-out both;
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  .hit.active { border-color: var(--accent); }
+  .hit .row1 { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .badge {
+    font-size: 11px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 6px; background: var(--accent-soft); color: var(--accent);
+    white-space: nowrap;
+  }
+  .badge.time { background: color-mix(in srgb, var(--warn) 18%, transparent); color: var(--warn); }
+  .badge.page { background: color-mix(in srgb, var(--ok) 18%, transparent); color: var(--ok); }
+  .badge.kind-pdf { background: color-mix(in srgb, var(--err) 16%, transparent); color: var(--err); }
+  .name { font-weight: 600; word-break: break-word; }
+  .path { color: var(--fg-faint); font-size: 12px; font-family: var(--mono); word-break: break-all; }
+  .score { margin-left: auto; display: flex; align-items: center; gap: 8px; min-width: 130px; }
+  .bar { flex: 1; height: 5px; background: var(--bg-soft); border-radius: 3px; overflow: hidden; }
+  .bar > i { display: block; height: 100%; background: var(--accent); }
+  .score span { font-family: var(--mono); font-size: 12px; color: var(--fg-soft); }
+  .snippet { margin-top: 9px; color: var(--fg-soft); font-size: 13.5px; }
+  .snippet mark { background: var(--mark); color: var(--mark-fg); border-radius: 3px; padding: 0 2px; }
+  .acts { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .linkbtn {
+    background: none; border: 0; padding: 0; color: var(--accent);
+    font-size: 13px; text-decoration: underline dotted;
+  }
+  .empty {
+    border: 1px dashed var(--border-strong); border-radius: var(--radius);
+    padding: 26px; text-align: center; color: var(--fg-faint); background: var(--card);
+  }
+
+  /* ---------------------------------------------------------------- panel */
+  .cols { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 30px; }
+  @media (min-width: 1000px) { .cols { grid-template-columns: 1.35fr 1fr; } }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 16px; box-shadow: var(--shadow);
+  }
+  .card h2 { margin: 0 0 4px; font-size: 15px; }
+  .card p.sub { margin: 0 0 14px; color: var(--fg-faint); font-size: 12.5px; }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+  .stat {
+    background: var(--card-alt); border: 1px solid var(--border); border-radius: 9px; padding: 9px 11px;
+  }
+  .stat .n { font-size: 19px; font-weight: 700; }
+  .stat .l { font-size: 11.5px; color: var(--fg-faint); text-transform: uppercase; letter-spacing: .4px; }
+  table.roots { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 12px; }
+  table.roots td { padding: 5px 4px; border-top: 1px solid var(--border); }
+  table.roots td:last-child { text-align: right; color: var(--fg-faint); font-family: var(--mono); }
+  .addrow { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .addrow input[type=text] {
+    flex: 1; min-width: 210px; background: var(--card-alt); border: 1px solid var(--border-strong);
+    border-radius: 9px; padding: 9px 11px; outline: 0;
+  }
+  .addrow input[type=text]:focus { border-color: var(--accent); }
+  label.chk { display: inline-flex; gap: 6px; align-items: center; color: var(--fg-soft); font-size: 13px; }
+  pre.log {
+    margin: 10px 0 0; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 9px;
+    padding: 10px; max-height: 190px; overflow: auto; font-family: var(--mono); font-size: 12px;
+    color: var(--fg-soft); white-space: pre-wrap;
+  }
+  .kv { font-family: var(--mono); font-size: 12px; color: var(--fg-faint); word-break: break-all; }
+  .kv b { color: var(--fg-soft); font-weight: 600; }
+
+  /* ---------------------------------------------------------------- viewer */
+  dialog#viewer {
+    border: 1px solid var(--border-strong); border-radius: 14px; padding: 0;
+    background: var(--card); color: var(--fg); width: min(1000px, 94vw); max-height: 90vh;
+    box-shadow: 0 24px 70px rgba(0,0,0,.35);
+  }
+  dialog#viewer::backdrop { background: rgba(10,14,20,.55); }
+  .vhead {
+    display: flex; align-items: center; gap: 10px; padding: 12px 14px;
+    border-bottom: 1px solid var(--border); flex-wrap: wrap;
+  }
+  .vhead .t { font-weight: 650; margin-right: auto; }
+  .vbody { padding: 12px 14px 18px; overflow: auto; max-height: calc(90vh - 58px); }
+  .vbody img, .vbody video { max-width: 100%; border-radius: 9px; background: #000; }
+  .vbody audio { width: 100%; }
+  .vbody iframe { width: 100%; height: 68vh; border: 1px solid var(--border); border-radius: 9px; background: #fff; }
+  .vbody pre {
+    margin: 0; font-family: var(--mono); font-size: 12.5px; white-space: pre-wrap;
+    color: var(--fg-soft); background: var(--bg-soft); border: 1px solid var(--border);
+    border-radius: 9px; padding: 12px; max-height: 62vh; overflow: auto;
+  }
+  .vbody pre mark { background: var(--mark); color: var(--mark-fg); }
+  kbd {
+    font-family: var(--mono); font-size: 11px; background: var(--bg-soft);
+    border: 1px solid var(--border-strong); border-bottom-width: 2px; border-radius: 5px; padding: 1px 5px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">
+      <span class="logo">GOBBLE</span>
+      <span class="tag">local multimodal search — nothing leaves this machine</span>
+    </div>
+    <div class="pills" id="pills"></div>
+    <button class="themebtn" id="themebtn" title="Toggle theme (t)">
+      <span id="themeicon">◐</span><span id="themelabel">Light</span>
+    </button>
+  </header>
+
+  <div class="searchbar">
+    <div class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+      </svg>
+      <input id="q" type="search" autocomplete="off" spellcheck="false"
+             placeholder="Search your files — words, a scene, a lecture, a page…  ( / to focus )">
+    </div>
+    <select class="k" id="k" title="how many results">
+      <option>10</option><option selected>20</option><option>50</option><option>100</option>
+    </select>
+    <button class="btn primary" id="go">Search</button>
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="chip" data-only="text"  aria-pressed="false">Text</button>
+    <button class="chip" data-only="pdf"   aria-pressed="false">PDF</button>
+    <button class="chip" data-only="image" aria-pressed="false">Images</button>
+    <button class="chip" data-only="video" aria-pressed="false">Video</button>
+    <button class="chip" data-only="audio" aria-pressed="false">Audio</button>
+    <button class="chip" id="clearonly"    aria-pressed="false">All types</button>
+    <input class="field" id="fpath" placeholder="path contains…" autocomplete="off">
+    <input class="field" id="froot" placeholder="indexed root contains…" autocomplete="off">
+    <span class="hint">timestamps are approximate — they point at the sampled
+      frame or audio segment nearest the words you searched</span>
+  </div>
+
+  <div class="status" id="status"></div>
+  <div class="results" id="results"></div>
+
+  <div class="cols">
+    <section class="card">
+      <h2>Add files to the index</h2>
+      <p class="sub">Point GOBBLE at any folder (or a single file). New files are
+        embedded with the same model as everything else, so they show up in the same search.</p>
+      <div class="addrow">
+        <input type="text" id="addpath" placeholder="E:\path\to\folder  (or D:\search test)">
+        <button class="btn small" id="addfolder">Add &amp; index</button>
+      </div>
+      <div class="addrow" style="align-items:center">
+        <label class="chk"><input type="checkbox" id="optmedia" checked> images, audio, video</label>
+        <label class="chk"><input type="checkbox" id="optocr"> OCR scanned PDFs / images</label>
+        <label class="chk"><input type="checkbox" id="optforce"> re-index unchanged files</label>
+        <button class="btn small" id="rootsbtn">Index everything in roots.txt</button>
+      </div>
+      <pre class="log" id="joblog">idle.</pre>
+    </section>
+
+    <section class="card">
+      <h2>Library</h2>
+      <p class="sub" id="libsub">loading…</p>
+      <div class="grid2" id="libstats"></div>
+      <table class="roots" id="libroots"></table>
+      <p class="kv" id="libkv"></p>
+    </section>
+  </div>
+</div>
+
+<dialog id="viewer">
+  <div class="vhead">
+    <span class="t" id="vtitle"></span>
+    <span class="hint" id="vsub"></span>
+    <button class="btn small" id="vopen">Open file</button>
+    <button class="btn small" id="vclose">Close <kbd>esc</kbd></button>
+  </div>
+  <div class="vbody" id="vbody"></div>
+</dialog>
+
+<script>
+"use strict";
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+/* ------------------------------------------------------------------ theme */
+const THEMES = ["light", "dark"];
+function setTheme(t, remember = true) {
+  document.documentElement.dataset.theme = t;
+  $("#themelabel").textContent = t === "dark" ? "Dark" : "Light";
+  $("#themeicon").textContent = t === "dark" ? "☾" : "☀";
+  if (remember) localStorage.setItem("gobble.theme", t);
+}
+(function initTheme() {
+  const saved = localStorage.getItem("gobble.theme");
+  setTheme(saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"), false);
+})();
+$("#themebtn").addEventListener("click", () => {
+  const now = document.documentElement.dataset.theme;
+  setTheme(THEMES[(THEMES.indexOf(now) + 1) % THEMES.length]);
+});
+
+/* ------------------------------------------------------------------ util */
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g,
+  (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+function highlight(text, query) {
+  let out = esc(text);
+  const words = [...new Set((query || "").toLowerCase().match(/[a-z0-9']{3,}/g) || [])];
+  for (const w of words) {
+    out = out.replace(new RegExp("(" + w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi"),
+                      "<mark>$1</mark>");
+  }
+  return out;
+}
+async function api(path, opts) {
+  const r = await fetch(path, opts);
+  const j = await r.json().catch(() => ({ error: r.status + " " + r.statusText }));
+  if (!r.ok && !j.error) j.error = r.status + " " + r.statusText;
+  return j;
+}
+const KB = (n) => n == null ? "" : (n > 1e6 ? (n / 1e6).toFixed(1) + " MB" : Math.max(1, Math.round(n / 1e3)) + " kB");
+const KIND_LABEL = {
+  text: "text", pdf: "pdf", image: "image",
+  video_frame: "video frame", video_audio: "video audio", audio: "audio",
+};
+
+/* ------------------------------------------------------------------ stats */
+async function loadStats() {
+  const s = await api("/api/stats");
+  if (s.error) { $("#pills").innerHTML = `<span class="pill bad">error <b>${esc(s.error)}</b></span>`; return; }
+  $("#pills").innerHTML = [
+    `<span class="pill">files <b>${s.files}</b></span>`,
+    `<span class="pill">chunks <b>${s.chunks}</b></span>`,
+    `<span class="pill">model <b>${esc(s.model)}</b> · ${s.dim}d</span>`,
+    `<span class="pill ${s.embed_ok ? "ok" : "bad"}">embedder <b>${s.embed_ok ? "ready" : "down"}</b></span>`,
+  ].join("");
+
+  const mods = s.by_modality || {};
+  $("#libsub").textContent = `${s.files} files · ${s.chunks} chunks · ${s.db_mb} MB index`;
+  const tiles = [
+    ["text", mods.text || 0], ["pdf", (s.by_kind || {}).pdf || 0],
+    ["images", mods.image || 0],
+    ["video frames", mods.video_frame || 0], ["video audio", mods.video_audio || 0],
+    ["standalone audio", mods.audio || 0],
+  ];
+  $("#libstats").innerHTML = tiles.map(([l, n]) =>
+    `<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
+  $("#libroots").innerHTML = (s.roots || []).map((r) =>
+    `<tr><td>${esc(r.root)}</td><td>${r.files}f / ${r.chunks}c</td></tr>`).join("");
+  $("#libkv").innerHTML =
+    `<b>db</b> ${esc(s.db)}<br><b>pdf text</b> ${esc(s.pdf || "not found — scanned PDFs fall back to OCR")}` +
+    `<br><b>ffmpeg</b> ${esc(s.ffmpeg || "not found — video/audio indexing unavailable")}` +
+    `<br><b>backend</b> ${esc(s.backend)}${s.embed_ok ? "" : "<br><b>embedder says</b> " + esc(s.embed_detail)}`;
+}
+
+/* ------------------------------------------------------------------ search */
+let ONLY = new Set();
+let LASTQ = "";
+
+$$(".chip[data-only]").forEach((c) => c.addEventListener("click", () => {
+  const v = c.dataset.only;
+  if (ONLY.has(v)) { ONLY.delete(v); c.setAttribute("aria-pressed", "false"); }
+  else { ONLY.add(v); c.setAttribute("aria-pressed", "true"); }
+  if (LASTQ) runSearch();
+}));
+$("#clearonly").addEventListener("click", () => {
+  ONLY.clear();
+  $$(".chip[data-only]").forEach((c) => c.setAttribute("aria-pressed", "false"));
+  if (LASTQ) runSearch();
+});
+["#fpath", "#froot"].forEach((sel) => {
+  let t; $(sel).addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => LASTQ && runSearch(), 350); });
+});
+$("#go").addEventListener("click", () => runSearch());
+$("#q").addEventListener("keydown", (e) => { if (e.key === "Enter") runSearch(); });
+$("#k").addEventListener("change", () => LASTQ && runSearch());
+addEventListener("keydown", (e) => {
+  if (e.key === "t" && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) {
+    setTheme(THEMES[(THEMES.indexOf(document.documentElement.dataset.theme) + 1) % THEMES.length]);
+  }
+  if (e.key === "/" && document.activeElement !== $("#q")) { e.preventDefault(); $("#q").focus(); }
+  if (e.key === "Escape" && !$("#viewer").open) $("#q").value = "";
+});
+
+async function runSearch() {
+  LASTQ = $("#q").value.trim();
+  const res = $("#results"), st = $("#status");
+  if (!LASTQ) { res.innerHTML = ""; st.textContent = ""; return; }
+  st.innerHTML = `<span>searching “${esc(LASTQ)}”…</span>`;
+  const p = new URLSearchParams({ q: LASTQ, k: $("#k").value });
+  if (ONLY.size) p.set("only", [...ONLY].join(","));
+  if ($("#fpath").value.trim()) p.set("path", $("#fpath").value.trim());
+  if ($("#froot").value.trim()) p.set("root", $("#froot").value.trim());
+  const data = await api("/api/search?" + p);
+  if (data.error) { st.innerHTML = `<span style="color:var(--err)">error: ${esc(data.error)}</span>`; return; }
+  const bits = [`<b>${data.count}</b> hit${data.count === 1 ? "" : "s"}`, `${data.ms} ms`];
+  if (data.only.length) bits.push("types: " + data.only.join(", "));
+  if (data.path) bits.push("path ~ " + esc(data.path));
+  if (data.root) bits.push("root ~ " + esc(data.root));
+  st.innerHTML = bits.map((b) => `<span>${b}</span>`).join(" · ");
+
+  if (!data.count) {
+    res.innerHTML = `<div class="empty">Nothing matched. Try fewer or broader words —
+      similarity search rewards meaning, not exact strings.</div>`;
+    return;
+  }
+  // Dynamic insertion: results are built and appended per hit, newest query first.
+  res.innerHTML = "";
+  data.hits.forEach((h, i) => res.appendChild(hitCard(h, i + 1)));
+}
+
+function hitCard(h, n) {
+  const el = document.createElement("article");
+  el.className = "hit";
+  const isVideo = h.modality === "video_frame" || h.modality === "video_audio";
+  const timeTxt = h.time ? `${h.modality === "video_audio" ? "audio " : ""}~${h.time}` : "";
+  const pageTxt = h.page ? `page ${h.page}${h.page_end && h.page_end !== h.page ? "–" + h.page_end : ""}` : "";
+  const pct = Math.max(0, Math.min(100, Math.round(h.score * 100)));
+  el.innerHTML = `
+    <div class="row1">
+      <span class="badge ${h.kind === "pdf" ? "kind-pdf" : ""}">${esc(h.kind === "pdf" ? "pdf" : (KIND_LABEL[h.modality] || h.modality))}</span>
+      ${timeTxt ? `<span class="badge time" title="approximate position — nearest sampled frame / audio segment">${esc(timeTxt)}</span>` : ""}
+      ${pageTxt ? `<span class="badge page">${esc(pageTxt)}</span>` : ""}
+      <span class="name">${esc(h.name)}</span>
+      <span class="score"><span class="bar"><i style="width:${pct}%"></i></span><span>${h.score.toFixed(3)}</span></span>
+    </div>
+    <div class="path">${esc(h.path)} · chunk ${h.chunk}${h.size ? " · " + KB(h.size) : ""}</div>
+    <div class="snippet">${highlight((h.text || "").replace(/\s+/g, " ").slice(0, 300), LASTQ)}</div>
+    <div class="acts">
+      <button class="linkbtn" data-act="view">Preview</button>
+      <button class="linkbtn" data-act="open">Show in folder</button>
+    </div>`;
+  el.querySelector('[data-act="view"]').addEventListener("click", () => openViewer(h));
+  el.querySelector('[data-act="open"]').addEventListener("click", async () => {
+    const r = await api("/api/open", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ path: h.path }),
+    });
+    if (!r.ok) alert("Could not open: " + (r.error || "unknown error"));
+  });
+  return el;
+}
+
+/* ------------------------------------------------------------------ viewer */
+function openViewer(h) {
+  const d = $("#viewer"), body = $("#vbody");
+  $("#vtitle").textContent = h.name;
+  const bits = [KIND_LABEL[h.modality] || h.modality];
+  if (h.time) bits.push("≈ " + h.time);
+  if (h.page) bits.push("page " + h.page + (h.page_end && h.page_end !== h.page ? "-" + h.page_end : ""));
+  bits.push("score " + h.score.toFixed(3));
+  $("#vsub").textContent = bits.join(" · ");
+  $("#vopen").onclick = () => api("/api/open", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ path: h.path }),
+  });
+  const src = "/api/raw?path=" + encodeURIComponent(h.path);
+  if (h.modality === "image") {
+    body.innerHTML = `<img src="${src}" alt="${esc(h.name)}">`;
+  } else if (h.modality === "video_frame" || h.modality === "video_audio") {
+    body.innerHTML = `<video controls autoplay playsinline src="${src}"></video>`;
+    const v = body.querySelector("video");
+    if (h.t != null) v.addEventListener("loadedmetadata", () => { try { v.currentTime = h.t; } catch (e) {} });
+  } else if (h.modality === "audio") {
+    body.innerHTML = `<audio controls autoplay src="${src}"></audio>`;
+  } else if (h.kind === "pdf") {
+    // Chrome/Edge honour #page= in the built-in viewer, so a hit opens on its page.
+    body.innerHTML = `<iframe src="${src}${h.page ? "#page=" + h.page : ""}"></iframe>`;
+  } else {
+    body.innerHTML = `<pre>loading…</pre>`;
+    fetch(src).then((r) => r.text()).then((txt) => {
+      const pre = body.querySelector("pre");
+      pre.innerHTML = highlight(txt.slice(0, 400000), LASTQ);
+      const m = pre.querySelector("mark");
+      if (m) m.scrollIntoView({ block: "center" });
+    }).catch(() => { body.querySelector("pre").textContent = "could not read this file"; });
+  }
+  d.showModal();
+}
+$("#vclose").addEventListener("click", () => $("#viewer").close());
+
+/* ------------------------------------------------------------------ indexing */
+let polling = null;
+async function startIndex(paths, force) {
+  const r = await api("/api/index", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      paths, force,
+      media: $("#optmedia").checked, ocr: $("#optocr").checked,
+    }),
+  });
+  if (!r.ok && r.error) { $("#joblog").textContent = r.error; return; }
+  pollJob();
+}
+function pollJob() {
+  clearInterval(polling);
+  const tick = async () => {
+    const j = await api("/api/index");
+    $("#joblog").textContent = (j.log || []).join("\n") || "working…";
+    $("#joblog").scrollTop = $("#joblog").scrollHeight;
+    if (!j.running) {
+      clearInterval(polling);
+      if (j.result) {
+        $("#joblog").textContent += `\n[summary] files_indexed=${j.result.indexed} chunks=${j.result.chunks}`
+          + ` errors=${j.result.errors} (${j.seconds}s)`;
+        loadStats();
+        if (LASTQ) runSearch();
+      }
+    }
+  };
+  tick();
+  polling = setInterval(tick, 900);
+}
+$("#addfolder").addEventListener("click", () => {
+  const v = $("#addpath").value.trim();
+  if (!v) { $("#addpath").focus(); return; }
+  startIndex([v], $("#optforce").checked);
+});
+$("#rootsbtn").addEventListener("click", () => startIndex([], $("#optforce").checked));
+$("#addpath").addEventListener("keydown", (e) => { if (e.key === "Enter") $("#addfolder").click(); });
+
+loadStats();
+api("/api/index").then((j) => { if (j.running) pollJob(); else if (j.log && j.log.length) { $("#joblog").textContent = j.log.join("\n"); } });
+</script>
+</body>
+</html>

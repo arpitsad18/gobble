@@ -1,0 +1,70 @@
+{
+  "url": "http://127.0.0.1:11436/v1/embeddings",
+  "clips": {
+    "cardio": {
+      "dim": 768,
+      "norm": 1.0
+    },
+    "cardio2": {
+      "dim": 768,
+      "norm": 1.0
+    },
+    "cooking": {
+      "dim": 768,
+      "norm": 1.0
+    }
+  },
+  "text_to_audio": {
+    "atrial fibrillation anticoagulation stroke prevention": {
+      "expect": "cardio",
+      "top1": "cardio",
+      "ok": true,
+      "ranking": [
+        [
+          "cardio",
+          0.855
+        ],
+        [
+          "cardio2",
+          0.7545
+        ],
+        [
+          "cooking",
+          0.5694
+        ]
+      ]
+    },
+    "task: search result | query: boiling water and cooking pasta with salt": {
+      "expect": "cooking",
+      "top1": "cooking",
+      "ok": true,
+      "ranking": [
+        [
+          "cooking",
+          0.8281
+        ],
+        [
+          "cardio",
+          0.492
+        ],
+        [
+          "cardio2",
+          0.4877
+        ]
+      ]
+    }
+  },
+  "audio_to_text": {
+    "task: search result | query: atrial fibrillation anticoagulation": 0.7624,
+    "task: search result | query: boiling pasta and salt in water": 0.4907
+  },
+  "controls": {
+    "tone440_vs_tone880": 0.952,
+    "tone440_vs_byte_reversed": 0.9013
+  },
+  "audio_to_audio": {
+    "cardio|cardio2": 0.7704,
+    "cardio|cooking": 0.6102,
+    "cardio2|cooking": 0.5664
+  }
+}

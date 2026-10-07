@@ -1,0 +1,18 @@
+{
+  "images": [
+    "1.1 - Digoxin, milrinone, nesiritide",
+    "1.2 - ACE inhibitors, ARBs, Aliskiren",
+    "2.1 - Acetazolamide, mannitol",
+    "2.2 - Loop diuretics",
+    "2.3 - Thiazides",
+    "2.4 - K+ sparing diuretics",
+    "3.1 - Calcium channel blockers",
+    "3.2 - Primary hypertension & hypertensive emergency",
+    "4.1 - Class I A-C",
+    "4.2 - Class II",
+    "4.3 - Class III",
+    "4.4 - Class IV"
+  ],
+  "top1": 2,
+  "n": 7
+}

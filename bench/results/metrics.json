@@ -1,0 +1,246 @@
+{
+  "corpus": {
+    "chunks": 2579,
+    "files": 421,
+    "chars": 3382506,
+    "extraction_methods": {
+      "skipped": 12,
+      "read": 420,
+      "ooxml": 1,
+      "pdf-unsupported": 1
+    }
+  },
+  "query_set": "ODYS-11 frozen query set v1",
+  "trivial_title_queries": [
+    "fn-01",
+    "fn-02"
+  ],
+  "semantic_positive_ids": [
+    "card-01",
+    "card-02",
+    "card-03",
+    "card-04",
+    "card-05",
+    "card-06",
+    "res-01",
+    "res-02",
+    "res-03",
+    "res-04",
+    "res-05",
+    "res-06",
+    "res-07",
+    "fn-03",
+    "fn-04",
+    "fn-05",
+    "tech-01",
+    "tech-02",
+    "tech-03",
+    "tech-04",
+    "tech-05",
+    "tech-06"
+  ],
+  "configs": {
+    "gemma-768": {
+      "dim": 768,
+      "backend": "openai",
+      "model": "embeddinggemma-2-BF16",
+      "n_positive": 24,
+      "n_negative": 4,
+      "n_semantic_positive": 22,
+      "semantic_hit@1": 0.4545,
+      "semantic_hit@5": 0.8182,
+      "semantic_hit@10": 0.9545,
+      "semantic_recall@10_chunk": 0.5117,
+      "semantic_mrr": 0.6251,
+      "all_hit@1": 0.5,
+      "all_hit@5": 0.8333,
+      "all_hit@10": 0.9583,
+      "all_recall@10_chunk": 0.5524,
+      "all_mrr": 0.6563,
+      "mrr_by_category": {
+        "cardiology": 0.4111,
+        "filename-ish": 0.5476,
+        "research-ops": 0.7286,
+        "skills": 0.7569
+      },
+      "hit@10_by_category": {
+        "cardiology": 1.0,
+        "filename-ish": 1.0,
+        "research-ops": 1.0,
+        "skills": 0.8333
+      },
+      "median_path_rank": 2.0,
+      "embed_ms_median": 32.2,
+      "search_ms_median": 0.38,
+      "neg_top1_mean": 0.6923,
+      "neg_top1_max": 0.7548,
+      "pos_top1_mean": 0.7387,
+      "pos_top1_min": 0.6718
+    },
+    "gemma-256": {
+      "dim": 256,
+      "backend": "openai",
+      "model": "embeddinggemma-2-BF16",
+      "n_positive": 24,
+      "n_negative": 4,
+      "n_semantic_positive": 22,
+      "semantic_hit@1": 0.5,
+      "semantic_hit@5": 0.7273,
+      "semantic_hit@10": 0.9091,
+      "semantic_recall@10_chunk": 0.4829,
+      "semantic_mrr": 0.6336,
+      "all_hit@1": 0.5417,
+      "all_hit@5": 0.75,
+      "all_hit@10": 0.9167,
+      "all_recall@10_chunk": 0.526,
+      "all_mrr": 0.6641,
+      "mrr_by_category": {
+        "cardiology": 0.3405,
+        "filename-ish": 0.75,
+        "research-ops": 0.7286,
+        "skills": 0.7576
+      },
+      "hit@10_by_category": {
+        "cardiology": 0.8333,
+        "filename-ish": 1.0,
+        "research-ops": 1.0,
+        "skills": 0.8333
+      },
+      "median_path_rank": 1.5,
+      "embed_ms_median": 31.1,
+      "search_ms_median": 0.31,
+      "neg_top1_mean": 0.7225,
+      "neg_top1_max": 0.7679,
+      "pos_top1_mean": 0.7596,
+      "pos_top1_min": 0.6945
+    },
+    "nomic-768": {
+      "dim": 768,
+      "backend": "ollama",
+      "model": "nomic-embed-text:latest",
+      "n_positive": 24,
+      "n_negative": 4,
+      "n_semantic_positive": 22,
+      "semantic_hit@1": 0.4545,
+      "semantic_hit@5": 0.9091,
+      "semantic_hit@10": 0.9091,
+      "semantic_recall@10_chunk": 0.4802,
+      "semantic_mrr": 0.6432,
+      "all_hit@1": 0.5,
+      "all_hit@5": 0.9167,
+      "all_hit@10": 0.9167,
+      "all_recall@10_chunk": 0.5235,
+      "all_mrr": 0.673,
+      "mrr_by_category": {
+        "cardiology": 0.5139,
+        "filename-ish": 0.8333,
+        "research-ops": 0.6476,
+        "skills": 0.6724
+      },
+      "hit@10_by_category": {
+        "cardiology": 0.8333,
+        "filename-ish": 1.0,
+        "research-ops": 1.0,
+        "skills": 0.8333
+      },
+      "median_path_rank": 2.0,
+      "embed_ms_median": 28.8,
+      "search_ms_median": 0.43,
+      "neg_top1_mean": 0.6111,
+      "neg_top1_max": 0.7015,
+      "pos_top1_mean": 0.6941,
+      "pos_top1_min": 0.6013
+    },
+    "nomic-256": {
+      "dim": 256,
+      "backend": "ollama",
+      "model": "nomic-embed-text:latest",
+      "n_positive": 24,
+      "n_negative": 4,
+      "n_semantic_positive": 22,
+      "semantic_hit@1": 0.5455,
+      "semantic_hit@5": 0.8182,
+      "semantic_hit@10": 0.9091,
+      "semantic_recall@10_chunk": 0.4599,
+      "semantic_mrr": 0.6833,
+      "all_hit@1": 0.5833,
+      "all_hit@5": 0.8333,
+      "all_hit@10": 0.9167,
+      "all_recall@10_chunk": 0.5049,
+      "all_mrr": 0.7097,
+      "mrr_by_category": {
+        "cardiology": 0.4741,
+        "filename-ish": 0.7778,
+        "research-ops": 0.7619,
+        "skills": 0.7536
+      },
+      "hit@10_by_category": {
+        "cardiology": 0.8333,
+        "filename-ish": 1.0,
+        "research-ops": 1.0,
+        "skills": 0.8333
+      },
+      "median_path_rank": 1.0,
+      "embed_ms_median": 26.2,
+      "search_ms_median": 0.41,
+      "neg_top1_mean": 0.6424,
+      "neg_top1_max": 0.7204,
+      "pos_top1_mean": 0.7213,
+      "pos_top1_min": 0.646
+    }
+  },
+  "filename_only_baseline": {
+    "note": "IDF-weighted filename match, no embeddings; reference point only",
+    "hit@10": 0.2083,
+    "mrr": 0.102,
+    "solved": {
+      "res-03": "aha 2027 career development award.md",
+      "res-05": "ethics and data access.md",
+      "fn-01": "cardiology research project.md",
+      "fn-02": "hospital triage system.md",
+      "tech-06": "500-what-can-it-do-areas-and-ventures.md"
+    }
+  },
+  "paired_bootstrap_mrr_gemma768_minus_nomic768": {
+    "delta": -0.0182,
+    "ci95": [
+      -0.1795,
+      0.1367
+    ],
+    "p_delta_le_0": 0.579
+  },
+  "threshold_diagnostics": {
+    "gemma-768": {
+      "pos_min": 0.6718,
+      "pos_median": 0.7466,
+      "pos_max": 0.8313,
+      "neg_min": 0.6595,
+      "neg_max": 0.7548,
+      "overlap": 0.083
+    },
+    "gemma-256": {
+      "pos_min": 0.6945,
+      "pos_median": 0.7661,
+      "pos_max": 0.8408,
+      "neg_min": 0.6891,
+      "neg_max": 0.7679,
+      "overlap": 0.0734
+    },
+    "nomic-768": {
+      "pos_min": 0.6013,
+      "pos_median": 0.6962,
+      "pos_max": 0.7732,
+      "neg_min": 0.5473,
+      "neg_max": 0.7015,
+      "overlap": 0.1002
+    },
+    "nomic-256": {
+      "pos_min": 0.646,
+      "pos_median": 0.7311,
+      "pos_max": 0.8035,
+      "neg_min": 0.5731,
+      "neg_max": 0.7204,
+      "overlap": 0.0744
+    }
+  }
+}

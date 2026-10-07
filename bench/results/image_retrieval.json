@@ -1,0 +1,334 @@
+{
+  "images": [
+    "1.1 - Digoxin, milrinone, nesiritide",
+    "1.2 - ACE inhibitors, ARBs, Aliskiren",
+    "2.1 - Acetazolamide, mannitol",
+    "2.2 - Loop diuretics",
+    "2.3 - Thiazides",
+    "2.4 - K+ sparing diuretics",
+    "3.1 - Calcium channel blockers",
+    "3.2 - Primary hypertension & hypertensive emergency",
+    "4.1 - Class I A-C",
+    "4.2 - Class II",
+    "4.3 - Class III",
+    "4.4 - Class IV"
+  ],
+  "n_queries": 12,
+  "top1": 5,
+  "top1_acc": 0.417,
+  "mrr": 0.613,
+  "results": [
+    {
+      "query": "2.2 - Loop diuretics",
+      "rank": 1,
+      "top5": [
+        {
+          "card": "2.2 - Loop diuretics",
+          "cos": 0.6054
+        },
+        {
+          "card": "2.4 - K+ sparing diuretics",
+          "cos": 0.5814
+        },
+        {
+          "card": "2.3 - Thiazides",
+          "cos": 0.5761
+        },
+        {
+          "card": "4.1 - Class I A-C",
+          "cos": 0.5605
+        },
+        {
+          "card": "4.3 - Class III",
+          "cos": 0.5584
+        }
+      ]
+    },
+    {
+      "query": "1.2 - ACE inhibitors, ARBs, Aliskiren",
+      "rank": 2,
+      "top5": [
+        {
+          "card": "4.3 - Class III",
+          "cos": 0.5834
+        },
+        {
+          "card": "1.2 - ACE inhibitors, ARBs, Aliskiren",
+          "cos": 0.5734
+        },
+        {
+          "card": "3.2 - Primary hypertension & hypertensive emergency",
+          "cos": 0.569
+        },
+        {
+          "card": "4.1 - Class I A-C",
+          "cos": 0.5664
+        },
+        {
+          "card": "2.4 - K+ sparing diuretics",
+          "cos": 0.5622
+        }
+      ]
+    },
+    {
+      "query": "2.1 - Acetazolamide, mannitol",
+      "rank": 9,
+      "top5": [
+        {
+          "card": "2.4 - K+ sparing diuretics",
+          "cos": 0.5766
+        },
+        {
+          "card": "2.3 - Thiazides",
+          "cos": 0.5645
+        },
+        {
+          "card": "3.2 - Primary hypertension & hypertensive emergency",
+          "cos": 0.5631
+        },
+        {
+          "card": "1.2 - ACE inhibitors, ARBs, Aliskiren",
+          "cos": 0.5608
+        },
+        {
+          "card": "2.2 - Loop diuretics",
+          "cos": 0.5545
+        }
+      ]
+    },
+    {
+      "query": "2.3 - Thiazides",
+      "rank": 2,
+      "top5": [
+        {
+          "card": "2.4 - K+ sparing diuretics",
+          "cos": 0.5601
+        },
+        {
+          "card": "2.3 - Thiazides",
+          "cos": 0.5577
+        },
+        {
+          "card": "1.2 - ACE inhibitors, ARBs, Aliskiren",
+          "cos": 0.5559
+        },
+        {
+          "card": "2.2 - Loop diuretics",
+          "cos": 0.5554
+        },
+        {
+          "card": "4.1 - Class I A-C",
+          "cos": 0.5535
+        }
+      ]
+    },
+    {
+      "query": "2.4 - K+ sparing diuretics",
+      "rank": 1,
+      "top5": [
+        {
+          "card": "2.4 - K+ sparing diuretics",
+          "cos": 0.5848
+        },
+        {
+          "card": "2.3 - Thiazides",
+          "cos": 0.5777
+        },
+        {
+          "card": "4.1 - Class I A-C",
+          "cos": 0.5657
+        },
+        {
+          "card": "2.1 - Acetazolamide, mannitol",
+          "cos": 0.5629
+        },
+        {
+          "card": "1.2 - ACE inhibitors, ARBs, Aliskiren",
+          "cos": 0.5498
+        }
+      ]
+    },
+    {
+      "query": "3.1 - Calcium channel blockers",
+      "rank": 1,
+      "top5": [
+        {
+          "card": "3.1 - Calcium channel blockers",
+          "cos": 0.5971
+        },
+        {
+          "card": "2.3 - Thiazides",
+          "cos": 0.562
+        },
+        {
+          "card": "4.3 - Class III",
+          "cos": 0.5566
+        },
+        {
+          "card": "4.4 - Class IV",
+          "cos": 0.5495
+        },
+        {
+          "card": "2.4 - K+ sparing diuretics",
+          "cos": 0.5478
+        }
+      ]
+    },
+    {
+      "query": "3.2 - Primary hypertension & hypertensive emergency",
+      "rank": 1,
+      "top5": [
+        {
+          "card": "3.2 - Primary hypertension & hypertensive emergency",
+          "cos": 0.6043
+        },
+        {
+          "card": "1.2 - ACE inhibitors, ARBs, Aliskiren",
+          "cos": 0.5808
+        },
+        {
+          "card": "2.2 - Loop diuretics",
+          "cos": 0.5779
+        },
+        {
+          "card": "4.1 - Class I A-C",
+          "cos": 0.5635
+        },
+        {
+          "card": "2.3 - Thiazides",
+          "cos": 0.5595
+        }
+      ]
+    },
+    {
+      "query": "4.1 - Class I A-C",
+      "rank": 1,
+      "top5": [
+        {
+          "card": "4.1 - Class I A-C",
+          "cos": 0.5955
+        },
+        {
+          "card": "3.2 - Primary hypertension & hypertensive emergency",
+          "cos": 0.5719
+        },
+        {
+          "card": "2.4 - K+ sparing diuretics",
+          "cos": 0.5698
+        },
+        {
+          "card": "4.4 - Class IV",
+          "cos": 0.5661
+        },
+        {
+          "card": "3.1 - Calcium channel blockers",
+          "cos": 0.5644
+        }
+      ]
+    },
+    {
+      "query": "4.2 - Class II",
+      "rank": 4,
+      "top5": [
+        {
+          "card": "4.1 - Class I A-C",
+          "cos": 0.5807
+        },
+        {
+          "card": "3.2 - Primary hypertension & hypertensive emergency",
+          "cos": 0.5743
+        },
+        {
+          "card": "1.2 - ACE inhibitors, ARBs, Aliskiren",
+          "cos": 0.5704
+        },
+        {
+          "card": "4.2 - Class II",
+          "cos": 0.568
+        },
+        {
+          "card": "4.4 - Class IV",
+          "cos": 0.5655
+        }
+      ]
+    },
+    {
+      "query": "4.3 - Class III",
+      "rank": 4,
+      "top5": [
+        {
+          "card": "4.1 - Class I A-C",
+          "cos": 0.5966
+        },
+        {
+          "card": "2.4 - K+ sparing diuretics",
+          "cos": 0.5911
+        },
+        {
+          "card": "3.2 - Primary hypertension & hypertensive emergency",
+          "cos": 0.5861
+        },
+        {
+          "card": "4.3 - Class III",
+          "cos": 0.579
+        },
+        {
+          "card": "3.1 - Calcium channel blockers",
+          "cos": 0.5675
+        }
+      ]
+    },
+    {
+      "query": "4.4 - Class IV",
+      "rank": 2,
+      "top5": [
+        {
+          "card": "3.1 - Calcium channel blockers",
+          "cos": 0.6029
+        },
+        {
+          "card": "4.4 - Class IV",
+          "cos": 0.5771
+        },
+        {
+          "card": "3.2 - Primary hypertension & hypertensive emergency",
+          "cos": 0.5757
+        },
+        {
+          "card": "1.2 - ACE inhibitors, ARBs, Aliskiren",
+          "cos": 0.569
+        },
+        {
+          "card": "2.4 - K+ sparing diuretics",
+          "cos": 0.5655
+        }
+      ]
+    },
+    {
+      "query": "1.1 - Digoxin, milrinone, nesiritide",
+      "rank": 4,
+      "top5": [
+        {
+          "card": "4.1 - Class I A-C",
+          "cos": 0.5796
+        },
+        {
+          "card": "4.4 - Class IV",
+          "cos": 0.5759
+        },
+        {
+          "card": "4.3 - Class III",
+          "cos": 0.5747
+        },
+        {
+          "card": "1.1 - Digoxin, milrinone, nesiritide",
+          "cos": 0.5612
+        },
+        {
+          "card": "2.3 - Thiazides",
+          "cos": 0.5597
+        }
+      ]
+    }
+  ]
+}

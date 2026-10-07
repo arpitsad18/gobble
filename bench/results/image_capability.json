@@ -1,0 +1,26 @@
+{
+  "image": "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/2.2 - Loop diuretics.png",
+  "image_bytes": 1009233,
+  "results": {
+    "llama-server/text_control": {
+      "http": 200,
+      "dim": 768,
+      "body": "ok"
+    },
+    "llama-server/data_uri_image": {
+      "http": 500,
+      "dim": null,
+      "body": "{\"error\":{\"code\":500,\"message\":\"input (940180 tokens) is too large to process. increase the physical batch size (current batch size: 2048)\",\"type\":\"server_error\"}}"
+    },
+    "llama-server/openai_content_parts": {
+      "http": 500,
+      "dim": null,
+      "body": "{\"error\":{\"code\":500,\"message\":\"image input is not supported - hint: if this is unexpected, you may need to provide the mmproj\",\"type\":\"server_error\"}}"
+    },
+    "ollama/data_uri_image": {
+      "http": 200,
+      "dim": 768,
+      "body": "ok"
+    }
+  }
+}

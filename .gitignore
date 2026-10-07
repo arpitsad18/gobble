@@ -1,0 +1,15 @@
+# indexes and caches are machine-local, never committed
+index/
+__pycache__/
+*.pyc
+*.db
+*.db-journal
+*.log
+
+# local environment
+.venv/
+venv/
+.env
+
+# model weights: too large for git — fetch EmbeddingGemma-2 separately
+*.gguf

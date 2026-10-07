@@ -1,0 +1,3 @@
+# scoped roots for the prototype
+E:/Obsidian Vault
+E:/Hermes/Data/skills

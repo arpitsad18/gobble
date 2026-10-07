@@ -1,0 +1,30 @@
+{
+  "sample_size": 300,
+  "repeats": 3,
+  "runs": [
+    {
+      "model": "embeddinggemma-2-BF16",
+      "backend": "openai",
+      "docs": 300,
+      "approx_tokens": 115739,
+      "repeats": 3,
+      "seconds_best": 9.75,
+      "seconds_mean": 13.73,
+      "docs_per_s": 30.8,
+      "tokens_per_s": 11876.5,
+      "full_corpus_projection_s": 83.8
+    },
+    {
+      "model": "nomic-embed-text:latest",
+      "backend": "ollama",
+      "docs": 300,
+      "approx_tokens": 115030,
+      "repeats": 3,
+      "seconds_best": 8.82,
+      "seconds_mean": 9.37,
+      "docs_per_s": 34.0,
+      "tokens_per_s": 13047.9,
+      "full_corpus_projection_s": 75.8
+    }
+  ]
+}
