@@ -8,8 +8,7 @@ Answers the issue's question with a reproducible harness:
     python bench_retrieval.py run                   # metrics -> results/ (json + csv + md)
     python bench_retrieval.py all                   # build + embed + run
 
-Corpus is frozen to roots.txt-style scope: Obsidian vault, Hermes skills,
-AI-ECG research output, UCS case-report audit.
+Corpus is frozen to roots.txt-style scope (paths anonymised in this repo).
 Query set is frozen in queries.json (hand-labelled targets, never tuning on it).
 
 Prompt formats (per model family, as published):
@@ -44,10 +43,10 @@ RESULTS = HERE / "results"
 # ---------------------------------------------------------------- corpus scope
 
 ROOTS = [
-    "E:/Obsidian Vault",
-    "E:/Hermes/Data/skills",
-    "E:/Medical/Research",
-    "E:/Research/UCS_case_reports",
+    "<vault>",
+    "<hermes>",
+    "<docs>",
+    "<docs>",
 ]
 
 TEXT_EXT = {

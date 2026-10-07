@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """GOBBLE - local multimodal search over your own files.
 
 One sqlite index, one vector space, for text, PDFs, images, audio and video.
@@ -7,7 +6,7 @@ leaves the machine and no account or API key is involved.
 
     python gobble.py index                  # index every root in roots.txt
     python gobble.py index "E:/some/dir"    # index one folder
-    python gobble.py query "stemi ecg findings" [-k 8]
+    python gobble.py query "ecg rhythm strip findings" [-k 8]
     python gobble.py stats
     python gobble.py serve                  # web UI on http://127.0.0.1:8765
 

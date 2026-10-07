@@ -24,8 +24,8 @@ def embed(texts, url="http://127.0.0.1:11434/api/embed",
     return a
 
 
-img = open("E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/"
-           "Picture Drop CV & Renal/2.2 - Loop diuretics.png", "rb").read()
+IMG = os.environ.get("GOBBLE_IMAGE", "<library>/cards/1.1 - example.png")
+img = open(IMG, "rb").read()
 uri = "data:image/png;base64," + base64.b64encode(img).decode()
 shuffled = "data:image/png;base64," + base64.b64encode(img[::-1]).decode()
 

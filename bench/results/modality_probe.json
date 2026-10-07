@@ -3,31 +3,31 @@
   "targets_indexed": {
     "img-01": [
       {
-        "target": "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/2.1 - Acetazolamide, mannitol.png",
+        "target": "<library>, mannitol.png",
         "in_index": false
       }
     ],
     "img-02": [
       {
-        "target": "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/4.1 - Class I A-C.png",
+        "target": "<library>/doc-002.png",
         "in_index": false
       },
       {
-        "target": "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/4.2 - Class II.png",
+        "target": "<library>/doc-003.png",
         "in_index": false
       },
       {
-        "target": "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/4.3 - Class III.png",
+        "target": "<library>/doc-004.png",
         "in_index": false
       },
       {
-        "target": "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/4.4 - Class IV.png",
+        "target": "<library>/doc-005.png",
         "in_index": false
       }
     ],
     "pdf-01": [
       {
-        "target": "E:/BOOKS/Academia/Motherlode/Textbooks/EKGs.pdf",
+        "target": "<library>/doc-001.pdf",
         "in_index": false
       }
     ]
@@ -39,7 +39,7 @@
       "query": "what does the annotated picture say about acetazolamide and mannitol",
       "target_in_index": [
         {
-          "target": "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/2.1 - Acetazolamide, mannitol.png",
+          "target": "<library>, mannitol.png",
           "in_index": false
         }
       ],
@@ -48,27 +48,27 @@
         {
           "rank": 1,
           "score": 0.6802,
-          "file": "E:\\Hermes\\Data\\skills\\creative\\manim-video\\references\\decorations.md"
+          "file": "<hermes>/doc-039.md"
         },
         {
           "rank": 2,
           "score": 0.6677,
-          "file": "E:\\Hermes\\Data\\skills\\creative\\manim-video\\references\\decorations.md"
+          "file": "<hermes>/doc-039.md"
         },
         {
           "rank": 3,
           "score": 0.6573,
-          "file": "E:\\Hermes\\Data\\skills\\creative\\baoyu-infographic\\references\\styles\\aged-academia.md"
+          "file": "<hermes>/doc-035.md"
         },
         {
           "rank": 4,
           "score": 0.656,
-          "file": "E:\\Hermes\\Data\\skills\\creative\\manim-video\\references\\paper-explainer.md"
+          "file": "<hermes>/doc-041.md"
         },
         {
           "rank": 5,
           "score": 0.656,
-          "file": "E:\\Hermes\\Data\\skills\\creative\\manim-video\\references\\paper-explainer.md"
+          "file": "<hermes>/doc-041.md"
         }
       ]
     },
@@ -78,19 +78,19 @@
       "query": "antiarrhythmic drug classes picture with the action potential phases labelled",
       "target_in_index": [
         {
-          "target": "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/4.1 - Class I A-C.png",
+          "target": "<library>/doc-002.png",
           "in_index": false
         },
         {
-          "target": "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/4.2 - Class II.png",
+          "target": "<library>/doc-003.png",
           "in_index": false
         },
         {
-          "target": "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/4.3 - Class III.png",
+          "target": "<library>/doc-004.png",
           "in_index": false
         },
         {
-          "target": "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/4.4 - Class IV.png",
+          "target": "<library>/doc-005.png",
           "in_index": false
         }
       ],
@@ -99,27 +99,27 @@
         {
           "rank": 1,
           "score": 0.6626,
-          "file": "E:\\Medical\\Research\\AECG-Rural\\AI-ECG-Rural-Deployment-Project-Outline.docx"
+          "file": "<docs>/doc-001.docx"
         },
         {
           "rank": 2,
           "score": 0.6608,
-          "file": "E:\\Medical\\Research\\AECG-Rural\\AI-ECG-Rural-Deployment-Project-Outline.docx"
+          "file": "<docs>/doc-001.docx"
         },
         {
           "rank": 3,
           "score": 0.6569,
-          "file": "E:\\Medical\\Research\\AECG-Rural\\AI-ECG-Rural-Deployment-Project-Outline.docx"
+          "file": "<docs>/doc-001.docx"
         },
         {
           "rank": 4,
           "score": 0.6544,
-          "file": "E:\\Obsidian Vault\\Projects\\Research\\Retrospective Study \u2014 Protocol Skeleton.md"
+          "file": "<vault>/doc-015.md"
         },
         {
           "rank": 5,
           "score": 0.6535,
-          "file": "E:\\Medical\\Research\\AECG-Rural\\AI-ECG-Rural-Deployment-Project-Outline.docx"
+          "file": "<docs>/doc-001.docx"
         }
       ]
     },
@@ -129,7 +129,7 @@
       "query": "adult learning method the ECG textbook uses to teach rhythm strips",
       "target_in_index": [
         {
-          "target": "E:/BOOKS/Academia/Motherlode/Textbooks/EKGs.pdf",
+          "target": "<library>/doc-001.pdf",
           "in_index": false
         }
       ],
@@ -138,27 +138,27 @@
         {
           "rank": 1,
           "score": 0.6949,
-          "file": "E:\\Obsidian Vault\\Projects\\Research\\Retrospective Study \u2014 Protocol Skeleton.md"
+          "file": "<vault>/doc-015.md"
         },
         {
           "rank": 2,
           "score": 0.6783,
-          "file": "E:\\Obsidian Vault\\Projects\\Research\\AI-ECG Rural Deployment \u2014 Full Outline.md"
+          "file": "<vault>/doc-009.md"
         },
         {
           "rank": 3,
           "score": 0.6772,
-          "file": "E:\\Medical\\Research\\AECG-Rural\\AI-ECG-Rural-Deployment-Project-Outline.docx"
+          "file": "<docs>/doc-001.docx"
         },
         {
           "rank": 4,
           "score": 0.6763,
-          "file": "E:\\Medical\\Research\\AECG-Rural\\AI-ECG-Rural-Deployment-Project-Outline.docx"
+          "file": "<docs>/doc-001.docx"
         },
         {
           "rank": 5,
           "score": 0.6747,
-          "file": "E:\\Obsidian Vault\\Projects\\Research\\AI-ECG Rural Deployment \u2014 Full Outline.md"
+          "file": "<vault>/doc-009.md"
         }
       ]
     },
@@ -168,7 +168,7 @@
       "query": "what does the annotated picture say about acetazolamide and mannitol",
       "target_in_index": [
         {
-          "target": "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/2.1 - Acetazolamide, mannitol.png",
+          "target": "<library>, mannitol.png",
           "in_index": false
         }
       ],
@@ -177,27 +177,27 @@
         {
           "rank": 1,
           "score": 0.5823,
-          "file": "E:\\Hermes\\Data\\skills\\creative\\popular-web-designs\\templates\\supabase.md"
+          "file": "<hermes>/doc-054.md"
         },
         {
           "rank": 2,
           "score": 0.5796,
-          "file": "E:\\Hermes\\Data\\skills\\creative\\popular-web-designs\\templates\\notion.md"
+          "file": "<hermes>/doc-051.md"
         },
         {
           "rank": 3,
           "score": 0.5763,
-          "file": "E:\\Hermes\\Data\\skills\\creative\\popular-web-designs\\templates\\claude.md"
+          "file": "<hermes>/doc-047.md"
         },
         {
           "rank": 4,
           "score": 0.5747,
-          "file": "E:\\Hermes\\Data\\skills\\creative\\popular-web-designs\\templates\\mongodb.md"
+          "file": "<hermes>/doc-050.md"
         },
         {
           "rank": 5,
           "score": 0.5728,
-          "file": "E:\\Hermes\\Data\\skills\\creative\\popular-web-designs\\templates\\replicate.md"
+          "file": "<hermes>/doc-052.md"
         }
       ]
     },
@@ -207,19 +207,19 @@
       "query": "antiarrhythmic drug classes picture with the action potential phases labelled",
       "target_in_index": [
         {
-          "target": "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/4.1 - Class I A-C.png",
+          "target": "<library>/doc-002.png",
           "in_index": false
         },
         {
-          "target": "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/4.2 - Class II.png",
+          "target": "<library>/doc-003.png",
           "in_index": false
         },
         {
-          "target": "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/4.3 - Class III.png",
+          "target": "<library>/doc-004.png",
           "in_index": false
         },
         {
-          "target": "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/4.4 - Class IV.png",
+          "target": "<library>/doc-005.png",
           "in_index": false
         }
       ],
@@ -228,27 +228,27 @@
         {
           "rank": 1,
           "score": 0.6677,
-          "file": "E:\\Medical\\Research\\AECG-Rural\\AI-ECG-Rural-Deployment-Project-Outline.docx"
+          "file": "<docs>/doc-001.docx"
         },
         {
           "rank": 2,
           "score": 0.6594,
-          "file": "E:\\Medical\\Research\\AECG-Rural\\AI-ECG-Rural-Deployment-Project-Outline.docx"
+          "file": "<docs>/doc-001.docx"
         },
         {
           "rank": 3,
           "score": 0.6568,
-          "file": "E:\\Obsidian Vault\\Projects\\Research\\AI-ECG Rural Deployment \u2014 Full Outline.md"
+          "file": "<vault>/doc-009.md"
         },
         {
           "rank": 4,
           "score": 0.6568,
-          "file": "E:\\Medical\\Research\\AECG-Rural\\AI-ECG-Rural-Deployment-Project-Outline.md"
+          "file": "<docs>/doc-001.md"
         },
         {
           "rank": 5,
           "score": 0.6548,
-          "file": "E:\\Medical\\Research\\AECG-Rural\\AI-ECG-Rural-Deployment-Project-Outline.docx"
+          "file": "<docs>/doc-001.docx"
         }
       ]
     },
@@ -258,7 +258,7 @@
       "query": "adult learning method the ECG textbook uses to teach rhythm strips",
       "target_in_index": [
         {
-          "target": "E:/BOOKS/Academia/Motherlode/Textbooks/EKGs.pdf",
+          "target": "<library>/doc-001.pdf",
           "in_index": false
         }
       ],
@@ -267,27 +267,27 @@
         {
           "rank": 1,
           "score": 0.6939,
-          "file": "E:\\Medical\\Research\\AECG-Rural\\AI-ECG-Rural-Deployment-Project-Outline.docx"
+          "file": "<docs>/doc-001.docx"
         },
         {
           "rank": 2,
           "score": 0.6916,
-          "file": "E:\\Medical\\Research\\AECG-Rural\\AI-ECG-Rural-Deployment-Project-Outline.md"
+          "file": "<docs>/doc-001.md"
         },
         {
           "rank": 3,
           "score": 0.6916,
-          "file": "E:\\Obsidian Vault\\Projects\\Research\\AI-ECG Rural Deployment \u2014 Full Outline.md"
+          "file": "<vault>/doc-009.md"
         },
         {
           "rank": 4,
           "score": 0.6907,
-          "file": "E:\\Medical\\Research\\AECG-Rural\\AI-ECG-Rural-Deployment-Project-Outline.docx"
+          "file": "<docs>/doc-001.docx"
         },
         {
           "rank": 5,
           "score": 0.6899,
-          "file": "E:\\Medical\\Research\\AECG-Rural\\AI-ECG-Rural-Deployment-Project-Outline.docx"
+          "file": "<docs>/doc-001.docx"
         }
       ]
     }

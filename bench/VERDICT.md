@@ -1,7 +1,7 @@
 # Verdict — Gemma now works (text + images + audio) on this box; the embedder call is a ~10% question, not a 30× one
 
 Frozen benchmark, 2026-10-07. Corpus: 421 files / 2,579 chunks / 3.38 M chars
-(Obsidian vault, Hermes skills, AI-ECG research output, UCS case-report audit).
+(anonymised in this repo: a personal notes vault, a skills library, and two research folders).
 Query set: 28 queries frozen in `queries.json` before any run — 22 scored
 semantics, 2 verbatim-title queries reported separately, 4 negative controls.
 Harness: `bench_retrieval.py`; raw output: `results/`.
@@ -80,7 +80,7 @@ silently falls back to CPU, which is what poisoned §2.1):
 
 ```
 ./llama-server.exe -m <embeddinggemma-2-BF16.gguf blob> \
-  --mmproj E:/Hermes/Data/models/embeddinggemma-2/mmproj-embeddinggemma-2-BF16.gguf \
+  --mmproj <hermes>\
   --embeddings --pooling mean -ngl 99 -c 2048 -b 2048 -ub 2048 \
   --host 127.0.0.1 --port 11436
 ```
@@ -100,7 +100,7 @@ the same image twice gives cosine **1.000000**; two different cards give
 **0.7528**; a matching text query beats a mismatched one (0.5776 vs 0.5438); every
 vector comes back L2-normalized, so cosine = dot product.
 
-Cross-modal retrieval — 12 Sketchy cardiology cards (hand-drawn diagrams with drug
+Cross-modal retrieval — 12 cardiology diagram cards (hand-drawn diagrams with drug
 names as stylized text), text query → image, `bench/probe_image_retrieval.py`
 (`results/image_retrieval.json`; cached image vectors in `results/image_index.json`):
 
@@ -265,14 +265,14 @@ stdlib-only and runs under either interpreter.
 `results/metrics.json` holds every per-query rank and top-10 list; nothing in
 this document is a hand transcription of a terminal.
 
-## 9. Multimodal test index over `D:\search test` (2026-10-07)
+## 9. Multimodal test index over `<corpus>)
 
 First run of `localsrch.py` against a real folder of mixed media, not a curated
-probe set. Source: `D:\search test` — 46 photos, 11 videos, 5 PDFs (two of them
+probe set. Source: `<corpus>, 11 videos, 5 PDFs (two of them
 medical atlases); **no standalone audio files, the audio lives inside the videos**.
 
 ```
-ltest.cmd index "D:/search test"      # LOCALSEARCH_DB=index\test-search.db
+ltest.cmd index "<corpus>"      # LOCALSEARCH_DB=index\test-search.db
 ltest.cmd query "amyloidosis nephrotic syndrome apple green birefringence" -k 8
 ltest.cmd stats
 ```
@@ -297,10 +297,9 @@ Text queries rank against the media correctly, with timestamps, at ~400 ms:
 | `reperfusion injury free radical damage to cell membrane` | `1.4 Free Radical Injury.mp4` frames 0:21:00 / 0:21:45 / 0:20:15 |
 
 Text→image is real but only when the query describes the photo. Taking one image,
-`20250206_152709.jpg`, and describing what is actually in it ("a man leaning over
-a counter holding an OPD patient clinical record folder in a hospital corridor")
+`20250206_152709.jpg`, and describing what is actually in it (in a sentence, the way a user would)
 puts that image **rank 1 of 46 at cos 0.795** against a next-best 0.635; a blander
-phrasing ("hospital OPD reception desk with patient record file") still ranks it
+phrasing (a vaguer sentence about the same scene) still ranks it
 1st at 0.696 but with only 0.035 over the runner-up. Vague queries do not separate
 images — the 46 images sit in a narrow band (pairwise cos min 0.557, mean 0.681)
 and generic prompts like "a laboratory scene" match everything at 0.58–0.71.

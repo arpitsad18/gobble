@@ -13,8 +13,7 @@ import json
 import urllib.error
 import urllib.request
 
-IMG = ("E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/"
-       "Picture Drop CV & Renal/2.2 - Loop diuretics.png")
+IMG = os.environ.get("GOBBLE_IMAGE", "<library>/cards/1.1 - example.png")
 
 
 def post(url: str, payload: dict, timeout: int = 120):

@@ -12,8 +12,8 @@ GOBBLE — local search
 | [ cellular injury ]                          [ Search ]  Light |
 | types: (any) text pdf image video audio      path ~ ______     |
 +---------------------------------------------------------------+
-| VIDEO AUDIO   ~0:33:00   1.2 Cellular Injury.mp4       0.79    |
-| PDF           PAGE 236   Medical Physiology (2021).pdf  0.82   |
+| VIDEO AUDIO   ~0:33:00   1.2 Example Clip.mp4            0.79    |
+| PDF           PAGE 236   Example Textbook (2021).pdf    0.82    |
 +---------------------------------------------------------------+
 ```
 
@@ -34,15 +34,19 @@ GOBBLE — local search
    gobble-test.cmd         :: throw-away demo index, http://127.0.0.1:8766
    ```
 
-   Both clear `PYTHONPATH` first — a foreign site-packages can shadow a working Pillow and
-   silently drop every image.
+   Both clear `PYTHONPATH` first (a foreign site-packages can shadow a working Pillow and
+   silently drop every image) and pick a `python`/`py` that can `import numpy`; set `PY` to
+   your interpreter first if you want to force one. Note: `py` on Windows honours a script's
+   `#!/usr/bin/env python` shebang and would then re-resolve `python` from `PATH`, so
+   `gobble.py` ships without a shebang and the launchers invoke the interpreter by full path.
 
 3. Or use the CLI:
 
    ```
    python gobble.py index                       # every root listed in roots.txt
    python gobble.py index "E:/some/dir"         # one folder … or one single file
-   python gobble.py query "stemi ecg findings" -k 8
+   #   (edit roots.txt first — it ships with example paths, not real ones)
+   python gobble.py query "ecg rhythm strip findings" -k 8
    python gobble.py stats
    python gobble.py serve
    ```
@@ -88,6 +92,13 @@ No vector database: vectors are float32 BLOBs in sqlite, scored with a single nu
 multiply (exact cosine, fine at tens of thousands of chunks).
 
 `bench/` holds the retrieval and throughput probes and their frozen results.
+
+## Your files stay yours
+
+`roots.txt` is a template: it ships with example paths, not the author's. Nothing in this
+repo points at a real folder, and the committed `bench/` results have their corpus paths
+replaced by placeholders (`<vault>/doc-014.md`, `<library>/doc-001.pdf`). The index itself
+(`index/*.db`) and model weights (`*.gguf`) are git-ignored, so a clone contains code only.
 
 ## Licence
 

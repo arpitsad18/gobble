@@ -1,3 +1,5 @@
-# scoped roots for the prototype
-E:/Obsidian Vault
-E:/Hermes/Data/skills
+# roots to index, one per line. Any folder (or single file) works.
+# Paths below are examples — replace with your own.
+E:\Notes
+E:\Books
+# E:\Research\Manuscripts

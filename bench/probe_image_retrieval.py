@@ -12,7 +12,7 @@ multimodal `content` array shape that llama-server accepts:
 (index into /v1/embeddings, NOT a bare data-URI string — a bare string is
 tokenized as ~1M chars of text and silently "works" with garbage vectors.)
 
-    python probe_image_retrieval.py                 # default Sketchy CV&Renal set
+    python probe_image_retrieval.py                 # default sample image folder
     python probe_image_retrieval.py <image_dir>     # any folder of .png/.jpg
 
 Writes bench/results/image_retrieval.json and caches image vectors next to it
@@ -35,8 +35,7 @@ from pathlib import Path
 import numpy as np
 
 HERE = Path(__file__).resolve().parent
-DEFAULT_DIR = ("E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/"
-               "Cardiovascular & Renal/Picture Drop CV & Renal")
+DEFAULT_DIR = os.environ.get("GOBBLE_IMAGE_DIR", "<library>/cards")
 URL = os.environ.get("LOCALSEARCH_URL", "http://127.0.0.1:11436/v1/embeddings")
 CACHE = HERE / "results" / "image_index.json"
 EXTS = {".png", ".jpg", ".jpeg", ".webp"}

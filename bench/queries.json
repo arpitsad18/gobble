@@ -2,10 +2,10 @@
   "name": "ODYS-11 frozen query set v1",
   "frozen": "2026-10-07",
   "corpus_scope": [
-    "E:/Obsidian Vault",
-    "E:/Hermes/Data/skills",
-    "E:/Medical/Research",
-    "E:/Research/UCS_case_reports"
+    "<vault>",
+    "<hermes>",
+    "<docs>",
+    "<docs>"
   ],
   "labelling_rules": [
     "targets were chosen by reading the file, never by looking at retrieval output",
@@ -19,7 +19,7 @@
       "kind": "positive",
       "category": "cardiology",
       "query": "how do you hold the sample size stable when the local patient mix makes the disease far rarer than in the training set",
-      "targets": ["E:/Obsidian Vault/Projects/Research/Retrospective Study — Protocol Skeleton.md"],
+      "targets": ["<vault>/doc-016.md"],
       "notes": "prevalence-adjusted PPV/NPV section"
     },
     {
@@ -27,7 +27,7 @@
       "kind": "positive",
       "category": "cardiology",
       "query": "which confidence interval method for comparing two AUCs on paired data",
-      "targets": ["E:/Obsidian Vault/Projects/Research/Retrospective Study — Protocol Skeleton.md"],
+      "targets": ["<vault>/doc-016.md"],
       "notes": "statistical analysis section names DeLong"
     },
     {
@@ -35,7 +35,7 @@
       "kind": "positive",
       "category": "cardiology",
       "query": "should a retrospective chart review be entered in the clinical trials registry before extracting records, and is an application number enough",
-      "targets": ["E:/Obsidian Vault/Unknown Unknowns/CTRI Before Data Collection.md"],
+      "targets": ["<vault>/doc-018.md"],
       "notes": "registration-before-data-collection rule"
     },
     {
@@ -43,8 +43,8 @@
       "kind": "positive",
       "category": "cardiology",
       "query": "a model that says the patient is fine must never talk the clinician out of escalating care",
-      "targets": ["E:/Obsidian Vault/Projects/Clinical Tools/Hospital Triage System.md",
-                  "E:/Obsidian Vault/Projects/Research/AI-ECG Rural Deployment.md"],
+      "targets": ["<vault>/doc-006.md",
+                  "<vault>/doc-011.md"],
       "notes": "escalate-only safety rule; stated in both files"
     },
     {
@@ -52,8 +52,8 @@
       "kind": "positive",
       "category": "cardiology",
       "query": "low ejection fraction screening performance when only a small share of the screened population actually has the disease",
-      "targets": ["E:/Obsidian Vault/Projects/Research/Retrospective Study — Protocol Skeleton.md",
-                  "E:/Obsidian Vault/Projects/Research/AI-ECG Rural Deployment — Full Outline.md"],
+      "targets": ["<vault>/doc-016.md",
+                  "<vault>/doc-010.md"],
       "notes": "LVDD NPV collapse under prevalence shift"
     },
     {
@@ -61,9 +61,9 @@
       "kind": "positive",
       "category": "cardiology",
       "query": "reporting standards for a prediction model built on clinical data",
-      "targets": ["E:/Obsidian Vault/Projects/Research/Retrospective Study — Protocol Skeleton.md",
-                  "E:/Obsidian Vault/Projects/Research/AI-ECG Rural Deployment.md",
-                  "E:/Obsidian Vault/Projects/Research/AI-ECG Rural Deployment — Full Outline.md"],
+      "targets": ["<vault>/doc-016.md",
+                  "<vault>/doc-011.md",
+                  "<vault>/doc-010.md"],
       "notes": "TRIPOD-AI / STARD-AI / PROBAST"
     },
     {
@@ -71,7 +71,7 @@
       "kind": "positive",
       "category": "research-ops",
       "query": "pathway and training steps to be allowed to practise medicine in the United States as a foreign graduate",
-      "targets": ["E:/Obsidian Vault/Projects/Career and Training/USMLE Pathway.md"],
+      "targets": ["<vault>/doc-005.md"],
       "notes": "filename-ish alias: 'USMLE pathway'"
     },
     {
@@ -79,7 +79,7 @@
       "kind": "positive",
       "category": "research-ops",
       "query": "what extra statistician hours do I actually need to buy for splits and sample size",
-      "targets": ["E:/Obsidian Vault/Projects/Research/Biostatistician Recruitment.md"],
+      "targets": ["<vault>/doc-012.md"],
       "notes": "scope-of-work note"
     },
     {
@@ -87,7 +87,7 @@
       "kind": "positive",
       "category": "research-ops",
       "query": "early career award money for someone who still needs a mentor and protected time",
-      "targets": ["E:/Obsidian Vault/Unknown Unknowns/AHA 2027 Career Development Award.md"],
+      "targets": ["<vault>/doc-017.md"],
       "notes": "funding note"
     },
     {
@@ -95,7 +95,7 @@
       "kind": "positive",
       "category": "research-ops",
       "query": "India-only funding call where the institution has to be the lead applicant",
-      "targets": ["E:/Obsidian Vault/Unknown Unknowns/ICMR Intramural 2026.md"],
+      "targets": ["<vault>/doc-021.md"],
       "notes": "eligibility gate"
     },
     {
@@ -103,7 +103,7 @@
       "kind": "positive",
       "category": "research-ops",
       "query": "rules for handling patient data and seeking ethics permission for a chart study",
-      "targets": ["E:/Obsidian Vault/Unknown Unknowns/Ethics and Data Access.md"],
+      "targets": ["<vault>/doc-020.md"],
       "notes": "de-identification and IEC"
     },
     {
@@ -111,7 +111,7 @@
       "kind": "positive",
       "category": "research-ops",
       "query": "is there really time to run a research project while doing the fellowship, honestly",
-      "targets": ["E:/Obsidian Vault/Unknown Unknowns/NIH Visiting Fellow Reality Check.md"],
+      "targets": ["<vault>/doc-022.md"],
       "notes": "expectation-setting note"
     },
     {
@@ -119,8 +119,8 @@
       "kind": "positive",
       "category": "research-ops",
       "query": "repeating loop that hunts for blind spots I have not noticed",
-      "targets": ["E:/Obsidian Vault/Unknown Unknowns/Unknown-Unknowns Scouting Loop.md",
-                  "E:/Obsidian Vault/Unknown Unknowns/Unknown Unknowns — Home.md"],
+      "targets": ["<vault>/doc-027.md",
+                  "<vault>/doc-026.md"],
       "notes": "title reuse query (concept name, not the file name string)"
     },
     {
@@ -128,7 +128,7 @@
       "kind": "positive",
       "category": "filename-ish",
       "query": "Cardiology Research Project",
-      "targets": ["E:/Obsidian Vault/Unknown Unknowns/Cardiology Research Project.md"],
+      "targets": ["<vault>/doc-019.md"],
       "notes": "bare-title query: exactly what a Spotlight box receives"
     },
     {
@@ -136,7 +136,7 @@
       "kind": "positive",
       "category": "filename-ish",
       "query": "Hospital Triage System",
-      "targets": ["E:/Obsidian Vault/Projects/Clinical Tools/Hospital Triage System.md"],
+      "targets": ["<vault>/doc-006.md"],
       "notes": "bare-title query"
     },
     {
@@ -144,9 +144,9 @@
       "kind": "positive",
       "category": "filename-ish",
       "query": "opening an xlsx and recalculating it",
-      "targets": ["E:/Hermes/Data/skills/productivity/xlsx/SKILL.md",
-                  "E:/Hermes/Data/skills/productivity/xlsx/scripts/xlsx_recalc.py",
-                  "E:/Hermes/Data/skills/productivity/xlsx/scripts/xlsx_read.py"],
+      "targets": ["<hermes>/doc-088.md",
+                  "<hermes>/doc-016.py",
+                  "<hermes>/doc-015.py"],
       "notes": "directory-name intent"
     },
     {
@@ -154,8 +154,8 @@
       "kind": "positive",
       "category": "filename-ish",
       "query": "Collaborative editing with tracked changes",
-      "targets": ["E:/Hermes/Data/skills/productivity/docx/references/revisions-and-comments.md",
-                  "E:/Hermes/Data/skills/productivity/docx/SKILL.md"],
+      "targets": ["<hermes>/doc-074.md",
+                  "<hermes>/doc-073.md"],
       "notes": "near-title query with no file of that exact name present"
     },
     {
@@ -163,9 +163,9 @@
       "kind": "positive",
       "category": "filename-ish",
       "query": "A step-by-step guide for diagnosing a process that keeps dying on Windows",
-      "targets": ["E:/Hermes/Data/skills/software-development/systematic-debugging/SKILL.md",
-                  "E:/Hermes/Data/skills/software-development/windows-cli-tooling/SKILL.md",
-                  "E:/Hermes/Data/skills/system-info/SKILL.md"],
+      "targets": ["<hermes>/doc-115.md",
+                  "<hermes>/doc-116.md",
+                  "<hermes>/doc-118.md"],
       "notes": "which skill would I open for this"
     },
     {
@@ -173,8 +173,8 @@
       "kind": "positive",
       "category": "skills",
       "query": "how do I clean up a machine where there are thousands of duplicate files across three drives",
-      "targets": ["E:/Hermes/Data/skills/productivity/bulk-file-reorganization/SKILL.md",
-                  "E:/Hermes/Data/skills/productivity/bulk-file-reorganization/scripts/find-duplicates.sh"],
+      "targets": ["<hermes>/doc-070.md",
+                  "<hermes>/doc-003.sh"],
       "notes": "skills skill"
     },
     {
@@ -182,9 +182,9 @@
       "kind": "positive",
       "category": "skills",
       "query": "the agent terminates whenever the shell call returns",
-      "targets": ["E:/Hermes/Data/skills/note-taking/syncthing-obsidian-sync/SKILL.md",
-                  "E:/Hermes/Data/skills/software-development/systematic-debugging/SKILL.md",
-                  "E:/Hermes/Data/skills/system-info/SKILL.md"],
+      "targets": ["<hermes>/doc-062.md",
+                  "<hermes>/doc-115.md",
+                  "<hermes>/doc-118.md"],
       "notes": "long-running process survival pitfall"
     },
     {
@@ -192,8 +192,8 @@
       "kind": "positive",
       "category": "skills",
       "query": "how do I read the text out of a scanned document when there is no text layer",
-      "targets": ["E:/Hermes/Data/skills/productivity/pdf/references/ocr-extraction.md",
-                  "E:/Hermes/Data/skills/productivity/pdf/SKILL.md"],
+      "targets": ["<hermes>/doc-080.md",
+                  "<hermes>/doc-079.md"],
       "notes": "OCR reference"
     },
     {
@@ -201,8 +201,8 @@
       "kind": "positive",
       "category": "skills",
       "query": "pushing a local branch up and opening a pull request from the terminal",
-      "targets": ["E:/Hermes/Data/skills/software-development/github/references/pr-workflow.md",
-                  "E:/Hermes/Data/skills/software-development/github/SKILL.md"],
+      "targets": ["<hermes>/doc-107.md",
+                  "<hermes>/doc-102.md"],
       "notes": "github workflow"
     },
     {
@@ -210,8 +210,8 @@
       "kind": "positive",
       "category": "skills",
       "query": "putting the vault on my phone and keeping both copies in step",
-      "targets": ["E:/Hermes/Data/skills/note-taking/syncthing-obsidian-sync/SKILL.md",
-                  "E:/Hermes/Data/skills/note-taking/obsidian/SKILL.md"],
+      "targets": ["<hermes>/doc-062.md",
+                  "<hermes>/doc-061.md"],
       "notes": "device sync, colloquial phrasing"
     },
     {
@@ -219,8 +219,8 @@
       "kind": "positive",
       "category": "skills",
       "query": "the actual five year survival figures and how much the treatment costs",
-      "targets": ["E:/Obsidian Vault/hermes/money/500-rupee-profit-task.md",
-                  "E:/Obsidian Vault/hermes/money/500-what-can-it-do-areas-and-ventures.md"],
+      "targets": ["<vault>/doc-028.md",
+                  "<vault>/doc-029.md"],
       "notes": "numbers-in-note query"
     },
     {
@@ -262,7 +262,7 @@
       "kind": "modality-probe",
       "category": "image",
       "query": "what does the annotated picture say about acetazolamide and mannitol",
-      "targets": ["E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/2.1 - Acetazolamide, mannitol.png"],
+      "targets": ["<library>, mannitol.png"],
       "notes": "image target is outside the benchmarked text corpus; Windows OCR could not run under the agent sandbox (WinRT broker refused GetFileFromPathAsync)"
     },
     {
@@ -270,10 +270,10 @@
       "kind": "modality-probe",
       "category": "image",
       "query": "antiarrhythmic drug classes picture with the action potential phases labelled",
-      "targets": ["E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/4.1 - Class I A-C.png",
-                  "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/4.2 - Class II.png",
-                  "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/4.3 - Class III.png",
-                  "E:/BOOKS/Academia/Motherlode/Sketchy/Pharm/Cardiovascular & Renal/Picture Drop CV & Renal/4.4 - Class IV.png"],
+      "targets": ["<library>/doc-002.png",
+                  "<library>/doc-003.png",
+                  "<library>/doc-004.png",
+                  "<library>/doc-005.png"],
       "notes": "same gap"
     },
     {
@@ -281,7 +281,7 @@
       "kind": "modality-probe",
       "category": "scanned-pdf",
       "query": "adult learning method the ECG textbook uses to teach rhythm strips",
-      "targets": ["E:/BOOKS/Academia/Motherlode/Textbooks/EKGs.pdf"],
+      "targets": ["<library>/doc-001.pdf"],
       "notes": "pdf extraction is unavailable in this sandbox (no pdftotext, no pypdf)"
     }
   ]
